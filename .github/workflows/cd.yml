@@ -54,15 +54,23 @@ jobs:
      # run: |-
       #  echo ${{steps.auth.outputs.access_token}} | docker login -u oauth2accesstoken --password-stdin https://$GAR_LOCATION-docker.pkg.dev
     
-    - id: 'gcloud'
-      name: 'gcloud'
-      run: |-
-        gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
-        export GOOGLE_APPLICATION_CREDENTIALS="${{ steps.auth.outputs.credentials_file_path }}"
-        gcloud auth configure-docker -q
-        gcloud config set account lahatrap20.aps2a@gmail.com
-        gcloud config set project ${{ secrets.GKE_PROJECT }}
-        gcloud auth list
+    # - id: 'gcloud'
+     # name: 'gcloud'
+      # run: |-
+        # " gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
+        # " export GOOGLE_APPLICATION_CREDENTIALS="${{ steps.auth.outputs.credentials_file_path }}"
+        # gcloud auth configure-docker -q
+        # gcloud config set account lahatrap20.aps2a@gmail.com
+        # gcloud config set project ${{ secrets.GKE_PROJECT }}
+        # gcloud auth list
+        
+    - id: 'compute-ssh'
+      uses: 'google-github-actions/ssh-compute@v0'
+      with:
+        instance_name: 'cs-1018782347392-default'
+        zone: 'asia-southeast1'
+        ssh_private_key: '${{ secrets.SSK_KEY }}'
+      
     - name: Git clone project
       run: |- 
         # cd /home/lahatrap20_aps2a
