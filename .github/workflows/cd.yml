@@ -57,8 +57,8 @@ jobs:
     - id: 'gcloud'
       name: 'gcloud'
       run: |-
-         "gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
-         "export GOOGLE_APPLICATION_CREDENTIALS="${{ steps.auth.outputs.credentials_file_path }}"
+         # "gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
+         # "export GOOGLE_APPLICATION_CREDENTIALS="${{ steps.auth.outputs.credentials_file_path }}"
          gcloud auth configure-docker -q
          # gcloud config set account lahatrap20.aps2a@gmail.com
          #gcloud config set project ${{ secrets.GKE_PROJECT }}
