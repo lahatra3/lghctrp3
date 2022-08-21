@@ -49,9 +49,9 @@ jobs:
         workload_identity_provider: ${{ secrets.WORKLOAD }}
         service_account: ${{ secrets.SERVER_ACCOUNT }}
       
-    - name: Docker configuration
-      run: |-
-        echo ${{steps.auth.outputs.access_token}} | docker login -u oauth2accesstoken --password-stdin https://$GAR_LOCATION-docker.pkg.dev
+    #- name: Docker configuration
+     # run: |-
+      #  echo ${{steps.auth.outputs.access_token}} | docker login -u oauth2accesstoken --password-stdin https://$GAR_LOCATION-docker.pkg.dev
         
     - name: Git clone project
       run: |- 
@@ -59,5 +59,6 @@ jobs:
         gcloud config set account lahatrap20.aps2a@gmail.com
         gcloud config set project ${{ secrets.GKE_PROJECT }}
         echo $HOME
-        cd /home/lahatrap20_aps2a
+        hostname
+        # cd /home/lahatrap20_aps2a
         # git clone https://github.com/lahatra3/lghctrp3.git
