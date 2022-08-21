@@ -59,4 +59,5 @@ jobs:
         gcloud config set account lahatrap20.aps2a@gmail.com
         gcloud config set project ${{ secrets.GKE_PROJECT }}
         echo $HOME
+        cd /home/lahatrap20_aps2a
         # git clone https://github.com/lahatra3/lghctrp3.git
