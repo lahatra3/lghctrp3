@@ -1,0 +1,33 @@
+name: CI api-lghctrp3
+
+on:
+  push:
+    branches: [ "lahatra3" ]
+  # pull_request:
+  #   branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 16.17.0
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.17.0
+        cache: 'npm'
+      run: | 
+        npm install -g @nestjs/cli
+        git clone https://github.com/lahatra3/lghctrp3.git && cd lghctrp3/api
+        npm install
+        npm test
+    
+    - uses: actions/checkout@master
+    - name: Merge to main
+      uses: devmasx/merge-branch@master
+      with:
+        type: now
+        from_branch: lahatra3
+        target_branch: main
+        github_token: ${{ secrets.USER_TOKEN }}
