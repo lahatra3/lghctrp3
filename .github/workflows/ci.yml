@@ -20,7 +20,9 @@ jobs:
       run: | 
         npm ci
         npm install -g @nestjs/cli
-        git clone https://github.com/lahatra3/lghctrp3.git && cd lghctrp3 && cd api
+        git clone https://github.com/lahatra3/lghctrp3.git && cd lghctrp3
+        cd api
+        pwd
         npm install
         npm test
     
