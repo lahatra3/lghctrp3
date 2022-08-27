@@ -13,10 +13,8 @@ jobs:
     - name: Use Node.js 16.17.0
       uses: actions/setup-node@v3.4.1
       with:
-        node-version: 16.17.0
+        node-version: "16.17.0"
         cache: 'npm'
-        cache-dependency-path: subdir/package-lock.json
-    - run: npm ci
         
     - name: "Install dependencies..."
       run: | 
