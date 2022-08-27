@@ -1,4 +1,4 @@
-name: CI api-lghctrp3
+name: CD api-lghctrp3
 
 on:
   pull_request:
