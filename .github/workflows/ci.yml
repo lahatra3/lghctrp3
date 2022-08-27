@@ -11,13 +11,7 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    #- name: Use Node.js 16.17.0
-     # uses: actions/setup-node@v3
-      #with:
-       # node-version: 16.17.0
-        #cache: 'npm'
-        
+    - uses: actions/checkout@v3        
     - name: "Install Node.js..."
       run: |
         curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
@@ -30,11 +24,8 @@ jobs:
         npm install
         npm test
     
-    - uses: actions/checkout@master
-    - name: Merge to main
-      uses: devmasx/merge-branch@master
+    - name: "Merge me!"
+      uses: ridedott/merge-me-action@v2
       with:
-        type: now
-        from_branch: lahatra3
-        target_branch: main
-        github_token: ${{ secrets.USER_TOKEN }}
+        GITHUB_LOGIN: lahatra3
+        GITHUB_TOKEN: ${{ secrets.USER_TOKEN }}
