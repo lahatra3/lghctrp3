@@ -3,8 +3,6 @@ name: CI api-lghctrp3
 on:
   push:
     branches: [ "lahatra3" ]
-  # pull_request:
-  #   branches: [ "main" ]
 
 jobs:
   build:
@@ -21,7 +19,7 @@ jobs:
     - name: "Install dependencies..."
       run: | 
         npm install -g @nestjs/cli
-        git clone https://github.com/lahatra3/lghctrp3.git && cd lghctrp3/api
+        git clone https://github.com/lahatra3/lghctrp3.git && cd lghctrp3 && cd api
         npm install
         npm test
     
